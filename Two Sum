@@ -1,0 +1,13 @@
+class Solution:
+    def twoSum(self, nums, target):
+
+        temp = {}
+
+        for i in range(len(nums)):
+            curr = nums[i]
+            exp = target - curr
+
+            if exp in temp:
+                return [i, temp[exp]]
+
+            temp[curr] = i
