@@ -1,0 +1,24 @@
+class Solution(object):
+    def findMode(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        dict = {}
+        res = []
+        def dfs(root):
+            if not root:
+                return 
+            dict[root.val] = dict.get(root.val, 0) + 1
+            dfs(root.left)
+            dfs(root.right)
+        
+        dfs(root)
+        num = float('-inf')
+        for k, v in dict.items():
+            if v > num:
+                num = v
+        for k, v in dict.items():
+            if v == num:
+                res.append(k)
+        return res
